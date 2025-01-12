@@ -1,0 +1,31 @@
+document.getElementById('subscriptionForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent form submission
+
+    const email = document.getElementById('email').value;
+    const messageElement = document.getElementById('message');
+
+    if (email) {
+        messageElement.textContent = `Thank you for subscribing with: ${email}`;
+        messageElement.style.color = 'green';
+    } else {
+        messageElement.textContent = 'Please enter a valid email address.';
+        messageElement.style.color = 'red';
+    }
+});
+// Show popup after 5 seconds
+setTimeout(function() {
+    document.getElementById('popup').style.display = 'flex';
+}, 5000);
+
+// Handle form submission
+document.getElementById('popupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('popupEmail').value;
+    alert(`Thank you for subscribing with ${email}!`);
+    document.getElementById('popup').style.display = 'none';
+});
+
+// Close the popup
+document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+});
